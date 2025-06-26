@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pranav's - Professional Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles for light mode */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Lighter, clean background */
+            color: #333;
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
+        }
+        .container {
+            max-width: 1280px; /* Slightly wider container */
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem; /* Equivalent to mb-14 */
+            position: relative;
+            font-size: 2.25rem; /* Equivalent to text-4xl */
+            font-weight: 800; /* Equivalent to font-extrabold */
+            color: #333; /* Equivalent to text-gray-800 */
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .section-title {
+                font-size: 3rem; /* Equivalent to md:text-5xl */
+            }
+        }
+        @media (min-width: 1024px) { /* lg breakpoint */
+            .section-title {
+                font-size: 3.75rem; /* Equivalent to lg:text-6xl */
+            }
+        }
+
+        /* Underline effect for section titles */
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 90px; /* Slightly wider underline */
+            height: 5px; /* Thicker underline */
+            background: linear-gradient(to right, #6366f1, #3b82f6); /* Gradient for underline */
+            margin: 1rem auto 0;
+            border-radius: 9999px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            padding: 2rem; /* Equivalent to p-8 */
+            border-radius: 1rem; /* Equivalent to rounded-2xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Equivalent to shadow-xl */
+            transition: all 0.3s ease-in-out;
+            transform: translateY(0);
+            border: 1px solid #f3f4f6; /* Equivalent to border border-gray-100 */
+        }
+        .card:hover {
+            transform: translateY(-0.75rem); /* Equivalent to hover:-translate-y-3 */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* Equivalent to hover:shadow-2xl */
+        }
+
+        .btn-primary {
+            background-image: linear-gradient(to right, #2563eb, #4f46e5); /* Equivalent to bg-gradient-to-r from-blue-600 to-indigo-700 */
+            color: #ffffff;
+            padding-left: 2.5rem; /* Equivalent to px-10 */
+            padding-right: 2.5rem;
+            padding-top: 1rem; /* Equivalent to py-4 */
+            padding-bottom: 1rem;
+            border-radius: 9999px; /* Equivalent to rounded-full */
+            font-weight: 600; /* Equivalent to font-semibold */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Equivalent to shadow-lg */
+            transition: all 0.3s ease-in-out;
+            transform: scale(1);
+        }
+        .btn-primary:hover {
+            transform: scale(1.05); /* Equivalent to hover:scale-105 */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* Equivalent to hover:shadow-xl */
+        }
+
+        .btn-secondary {
+            background-color: #e5e7eb; /* Equivalent to bg-gray-200 */
+            color: #374151; /* Equivalent to text-gray-800 */
+            padding-left: 2.5rem; /* Equivalent to px-10 */
+            padding-right: 2.5rem;
+            padding-top: 1rem; /* Equivalent to py-4 */
+            padding-bottom: 1rem;
+            border-radius: 9999px; /* Equivalent to rounded-full */
+            font-weight: 600; /* Equivalent to font-semibold */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Equivalent to shadow-lg */
+            transition: all 0.3s ease-in-out;
+            transform: scale(1);
+        }
+        .btn-secondary:hover {
+            transform: scale(1.05); /* Equivalent to hover:scale-105 */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* Equivalent to hover:shadow-xl */
+            background-color: #d1d5db; /* Equivalent to hover:bg-gray-300 */
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #2563eb; /* Equivalent to border-2 border-blue-600 */
+            color: #2563eb; /* Equivalent to text-blue-600 */
+            padding-left: 2.5rem; /* Equivalent to px-10 */
+            padding-right: 2.5rem;
+            padding-top: 1rem; /* Equivalent to py-4 */
+            padding-bottom: 1rem;
+            border-radius: 9999px; /* Equivalent to rounded-full */
+            font-weight: 600; /* Equivalent to font-semibold */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Equivalent to shadow-md */
+            transition: all 0.3s ease-in-out;
+            transform: scale(1);
+        }
+        .btn-outline:hover {
+            background-color: #2563eb; /* Equivalent to hover:bg-blue-600 */
+            color: #ffffff; /* Equivalent to hover:text-white */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Equivalent to hover:shadow-lg */
+            transform: scale(1.05); /* Equivalent to hover:scale-105 */
+        }
+
+
+        /* Custom animation for hero text */
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fadeInSlideUp {
+            animation: fadeInSlideUp 0.9s ease-out forwards;
+        }
+
+        /* Custom animation for hero image */
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .animate-scaleIn {
+            animation: scaleIn 0.8s ease-out forwards;
+        }
+
+        /* Back to top button styles */
+        #back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: linear-gradient(to right, #6366f1, #3b82f6); /* Gradient button */
+            color: white;
+            width: 55px; /* Larger button */
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25); /* Stronger shadow */
+            transition: opacity 0.3s, transform 0.3s, background 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            cursor: pointer;
+            z-index: 1000;
+        }
+        #back-to-top.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #back-to-top:hover {
+            transform: translateY(-8px) scale(1.1); /* More pronounced hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Input field focus styles */
+        input:focus, textarea:focus {
+            border-color: #6366f1; /* Indigo on focus */
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3); /* Subtle focus ring */
+        }
+
+        /* Project filter button styles */
+        .filter-button {
+            padding-left: 1.5rem; /* px-6 */
+            padding-right: 1.5rem;
+            padding-top: 0.5rem; /* py-2 */
+            padding-bottom: 0.5rem;
+            border-radius: 9999px; /* rounded-full */
+            font-weight: 500; /* font-medium */
+            font-size: 1.125rem; /* text-lg */
+            cursor: pointer;
+            transition: all 0.2s; /* duration-200 */
+        }
+        .filter-button.active {
+            background-color: #2563eb; /* bg-blue-600 */
+            color: #ffffff; /* text-white */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+        }
+        .filter-button:not(.active):hover {
+            background-color: #e5e7eb; /* bg-gray-200 */
+            color: #374151; /* text-gray-800 */
+        }
+        .project-card.hidden {
+            display: none;
+        }
+
+        /* Hamburger menu animation */
+        .hamburger-line {
+            display: block;
+            width: 32px;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 9999px;
+            transition: all 0.3s ease-in-out;
+        }
+        .hamburger-line:nth-child(2) {
+            margin: 6px 0;
+        }
+        #mobile-menu-button.open .hamburger-line:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        #mobile-menu-button.open .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        #mobile-menu-button.open .hamburger-line:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* Desktop Navigation Link Hover & Active State */
+        .desktop-nav-link {
+            position: relative;
+            padding: 0.5rem 0.75rem; /* py-2 px-3, reduced initial padding */
+            border-radius: 9999px; /* More rounded */
+            transition: all 0.3s ease; /* Smooth transition for all properties */
+            color: white; /* Default text color for header nav links */
+            font-weight: 500; /* font-medium */
+            font-size: 1.125rem; /* text-xl, reduced initial size */
+            overflow: hidden; /* Important for background effects */
+            z-index: 1; /* Ensure text is above pseudo-element */
+            border: 1px solid transparent; /* Subtle border for definition */
+        }
+
+        .desktop-nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(79, 70, 229, 0.2); /* Semi-transparent indigo-700-like color for hover */
+            border-radius: 9999px;
+            transform: scale(0); /* Start hidden */
+            transform-origin: center;
+            transition: transform 0.3s ease-out;
+            z-index: -1; /* Place behind text */
+        }
+
+        .desktop-nav-link:hover::before {
+            transform: scale(1); /* Grow on hover */
+        }
+
+        .desktop-nav-link:hover {
+            transform: translateY(-2px); /* Slight lift on hover */
+            color: white; /* Ensure text remains white */
+            border-color: rgba(255, 255, 255, 0.3); /* Subtle white border on hover */
+        }
+
+        .desktop-nav-link.active-link {
+            background-color: #4f46e5; /* Distinct active background */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transform: scale(1.02); /* Slight scale for active */
+            color: white; /* Ensure text is white for active */
+            border-color: #818cf8; /* Light indigo border for active */
+        }
+
+        /* Header on Scroll */
+        .main-header {
+            transition: all 0.3s ease;
+            padding-top: 0.8rem; /* Initial padding: py-3.2 (reduced from py-4) */
+            padding-bottom: 0.8rem; /* Initial padding: py-3.2 (reduced from py-4) */
+        }
+        .main-header .nav-logo {
+            font-size: 1.8rem; /* Initial font size for logo */
+            transition: font-size 0.3s ease;
+        }
+        .main-header .md\:text-4xl { /* For larger screens, initial logo size */
+            font-size: 2rem; /* md:text-3xl (reduced from 4xl on desktop) */
+            transition: font-size 0.3s ease;
+        }
+
+        .main-header.scrolled {
+            padding-top: 0.4rem; /* Further reduced padding when scrolled: py-1.6 */
+            padding-bottom: 0.4rem; /* Further reduced padding when scrolled: py-1.6 */
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+        }
+        .main-header.scrolled .nav-logo {
+            font-size: 1.25rem; /* text-xl when scrolled */
+        }
+        .main-header.scrolled .md\:text-4xl { /* For larger screens, scrolled logo size */
+            font-size: 1.5rem; /* md:text-2xl when scrolled */
+        }
+        .main-header.scrolled .desktop-nav-link {
+             font-size: 0.8rem; /* text-xs reduced for nav links */
+             padding: 0.2rem 0.4rem; /* py-0.8 px-1.6 */
+        }
+        .main-header.scrolled #theme-toggle,
+        .main-header.scrolled #mobile-menu-button {
+            transform: scale(0.6); /* Shrink buttons slightly more */
+            transition: transform 0.3s ease;
+        }
+
+
+        /* Dark Mode Styles */
+        html.dark {
+            /* General background and text colors */
+            body {
+                background-color: #1a202c; /* Darker background */
+                color: #e2e8f0; /* Lighter text */
+            }
+            .section-title {
+                color: #f8fafc; /* Lighter title in dark mode */
+            }
+            .card {
+                background-color: #2d3748; /* Darker card background */
+                border-color: #4a5568; /* Darker border */
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 4px 6px rgba(0, 0, 0, 0.15); /* Adjusted shadow for dark mode */
+            }
+            .card:hover {
+                 box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4), 0 6px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            /* Header specific dark styles */
+            .main-header {
+                background: linear-gradient(to right, #1a202c, #2d3748);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+            }
+            .main-header a {
+                color: #e2e8f0;
+            }
+            .main-header a:hover {
+                background-color: #2d3748;
+            }
+            .main-header.scrolled {
+                box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5); /* Even stronger shadow in dark mode when scrolled */
+            }
+            .desktop-nav-link::before {
+                background-color: rgba(144, 205, 244, 0.1); /* Lighter semi-transparent for dark mode hover */
+            }
+            .desktop-nav-link:hover {
+                border-color: rgba(226, 232, 240, 0.3); /* Lighter border in dark mode */
+            }
+            .desktop-nav-link.active-link {
+                border-color: #90cdf4; /* Lighter blue border for active in dark mode */
+            }
+
+
+            /* Hero section specific dark styles */
+            .hero-section {
+                background: linear-gradient(to br, #1a202c, #2d3748);
+                box-shadow: inset 0 -5px 15px rgba(0, 0, 0, 0.2);
+            }
+            .hero-section h1 {
+                color: #e2e8f0;
+            }
+            .hero-section p {
+                color: #a0aec0;
+            }
+            .hero-section .text-blue-600 {
+                color: #90cdf4; /* Lighter blue for highlights */
+            }
+            .hero-section .text-indigo-700 {
+                color: #a3bffa; /* Lighter indigo for highlights */
+            }
+
+            /* About section dark styles */
+            #about {
+                background-color: #2d3748;
+            }
+            #about .text-gray-700 {
+                color: #cbd5e0;
+            }
+
+            /* Skills section dark styles */
+            #skills {
+                background-color: #1a202c;
+            }
+            #skills .text-gray-600 {
+                color: #cbd5e0;
+            }
+
+            /* Projects section dark styles */
+            #projects {
+                background-color: #2d3748;
+            }
+            #projects .text-gray-700 {
+                color: #cbd5e0;
+            }
+            .filter-button:not(.active) {
+                background-color: #4a5568;
+                color: #e2e8f0;
+            }
+            .filter-button:not(.active):hover {
+                background-color: #6366f1;
+                color: #fff;
+            }
+
+            /* Connect section dark styles */
+            #connect {
+                background-color: #1a202c;
+            }
+            #connect .text-gray-700 {
+                color: #cbd5e0;
+            }
+
+            /* Footer specific dark styles */
+            footer {
+                background-color: #0d0f12;
+            }
+            footer a {
+                color: #90cdf4;
+            }
+
+            /* Button dark mode adjustments */
+            .btn-primary {
+                background: linear-gradient(to right, #4c51bf, #667eea);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            }
+            .btn-primary:hover {
+                background: linear-gradient(to right, #5a67d8, #7f9cf5);
+            }
+            .btn-secondary {
+                background-color: #4a5568;
+                color: #e2e8f0;
+            }
+            .btn-secondary:hover {
+                background-color: #6366f1;
+                color: #e2e8f0;
+            }
+            .btn-outline {
+                border-color: #667eea;
+                color: #667eea;
+            }
+            .btn-outline:hover {
+                background-color: #667eea;
+                color: #fff;
+            }
+
+            /* Social icons dark mode */
+            #connect a svg {
+                color: #a0aec0;
+            }
+            #connect a:hover svg {
+                color: #90cdf4;
+            }
+
+            /* Back to top button in dark mode */
+            #back-to-top {
+                background: linear-gradient(to right, #4c51bf, #667eea);
+            }
+            #back-to-top:hover {
+                background: linear-gradient(to right, #5a67d8, #7f9cf5);
+            }
+
+            /* Input fields dark mode */
+            input, textarea {
+                background-color: #4a5568;
+                border-color: #6366f1;
+                color: #e2e8f0;
+            }
+            input::placeholder, textarea::placeholder {
+                color: #a0aec0;
+            }
+            input:focus, textarea:focus {
+                border-color: #90cdf4;
+                box-shadow: 0 0 0 3px rgba(144, 205, 244, 0.3);
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header id="main-header" class="bg-gradient-to-r from-blue-800 to-indigo-900 text-white py-6 shadow-2xl sticky top-0 z-50 main-header">
+        <nav class="container flex justify-between items-center">
+            <a href="#" class="nav-logo text-3xl md:text-4xl font-extrabold rounded-md p-3 hover:bg-blue-700 transition-colors duration-300 tracking-wide">Pranav Kumbhar</a>
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="#about" class="desktop-nav-link" data-section="about">About</a></li>
+                <li><a href="#skills" class="desktop-nav-link" data-section="skills">Skills</a></li>
+                <li><a href="#projects" class="desktop-nav-link" data-section="projects">Projects</a></li>
+                <li><a href="#connect" class="desktop-nav-link" data-section="connect">Connect</a></li>
+            </ul>
+            <div class="flex items-center space-x-4">
+                <!-- Dark Mode Toggle Button -->
+                <button id="theme-toggle" class="text-white p-2 rounded-md hover:bg-blue-700 transition-colors duration-300" aria-label="Toggle dark mode">
+                    <!-- Sun Icon for Light Mode -->
+                    <svg id="sun-icon" class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h1M3 12H2m15.325-4.879l.707-.707M3.934 3.934l.707.707m0 12.728l-.707.707m12.728 0l.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"></path>
+                    </svg>
+                    <!-- Moon Icon for Dark Mode -->
+                    <svg id="moon-icon" class="h-7 w-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                </button>
+
+                <!-- Mobile Menu Button (Hamburger) -->
+                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none p-2 rounded-md hover:bg-blue-700 transition-colors duration-300" aria-label="Open mobile menu">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-blue-800 text-center py-6 mt-4 rounded-xl mx-4 shadow-xl">
+            <ul class="flex flex-col space-y-5">
+                <li><a href="#about" class="block text-xl hover:bg-blue-700 p-3 rounded-lg transition-colors duration-300">About</a></li>
+                <li><a href="#skills" class="block text-xl hover:bg-blue-700 p-3 rounded-lg transition-colors duration-300">Skills</a></li>
+                <li><a href="#projects" class="block text-xl hover:bg-blue-700 p-3 rounded-lg transition-colors duration-300">Projects</a></li>
+                <li><a href="#connect" class="block text-xl hover:bg-blue-700 p-3 rounded-lg transition-colors duration-300">Connect</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="bg-gradient-to-br from-gray-50 to-gray-100 py-24 text-center rounded-b-3xl shadow-inner-lg overflow-hidden relative hero-section">
+        <div class="container relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-12 md:space-y-0 md:space-x-20">
+                <div class="flex-shrink-0 animate-scaleIn" style="animation-delay: 0.2s;">
+                    <!-- Placeholder for your profile picture -->
+                    <img src="/jp.jpeg" alt="Your professional photo" class="rounded-full w-72 h-72 object-cover border-8 border-indigo-500 shadow-3xl transition-transform duration-300 hover:scale-105">
+                </div>
+                <div class="text-center md:text-left animate-fadeInSlideUp" style="animation-delay: 0.4s;">
+                    <h1 class="text-6xl lg:text-7xl font-extrabold text-gray-900 mb-5 leading-tight">Hi, I'm <span class="text-blue-600">Pranav</span></h1>
+                    <p class="text-3xl lg:text-4xl text-gray-700 mb-8 font-light">A Passionate <span class="font-bold text-indigo-700"><span id="typewriter-text"></span><span class="animate-pulse">|</span></span></p>
+                    <p class="text-xl text-gray-600 max-w-xl mx-auto md:mx-0 leading-relaxed">
+                        Welcome to my digital space! I specialize in creating engaging web experiences and solving complex problems with elegant code. Explore my work below.
+                    </p>
+                    <div class="mt-12 flex flex-col sm:flex-row justify-center md:justify-start space-y-5 sm:space-y-0 sm:space-x-5">
+                        <a href="#projects" class="btn-primary">View My Work</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white rounded-t-3xl shadow-lg mt-12">
+        <div class="container">
+            <h2 class="section-title text-gray-800">About Me</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="text-lg md:text-xl text-gray-700 leading-relaxed space-y-6">
+                    <p>
+                        Hello! My name is <span class="font-semibold text-blue-600">Pranav Kumbhar</span> and I'm a dedicated  Full-Stack Developer with a passion for building intuitive and impactful digital solutions. I have [Number] years of experience in [mention key areas, e.g., web development, software engineering, UI/UX design].
+                    </p>
+                    <p>
+                        My journey in technology started when . I love learning new technologies and constantly challenging myself to grow. I believe in creating clean, efficient, and scalable code that makes a real difference.
+                    </p>
+                    <p>
+                        Outside of coding, I enjoy [mention a hobby or interest, e.g., hiking, reading, playing music]. I'm always open to collaborating on interesting projects and connecting with fellow enthusiasts. Feel free to explore my work and reach out!
+                    </p>
+                </div>
+                <div class="flex justify-center md:justify-end animate-scaleIn" style="animation-delay: 0.6s;">
+                    <!-- You can add another image or an illustration here -->
+                    <img src="https://placehold.co/550x400/e0e7ff/3f51b5?text=About+Illustration" alt="Illustration representing abstract concepts of development" class="rounded-xl shadow-xl hidden md:block transition-transform duration-300 hover:scale-105">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 bg-gray-100">
+        <div class="container">
+            <h2 class="section-title text-gray-800">My Skills</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+                <!-- Skill Card 1 -->
+                <div class="card text-center">
+                    <div class="text-7xl mb-5 text-blue-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code mx-auto"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-800">Frontend Development</h3>
+                    <p class="text-gray-600 text-base leading-relaxed">HTML, CSS, JavaScript, React, Vue, Angular, Tailwind CSS, Svelte</p>
+                </div>
+                <!-- Skill Card 2 -->
+                <!-- <div class="card text-center">
+                    <div class="text-7xl mb-5 text-indigo-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-server mx-auto"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="7" x2="7" y1="6" y2="6"/><line x1="7" x2="7" y1="18" y2="18"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-800">Backend Development</h3>
+                    <p class="text-gray-600 text-base leading-relaxed">Node.js, Python (Django, Flask), Ruby on Rails, Go, Java (Spring Boot), SQL, MongoDB, PostgreSQL</p>
+                </div> -->
+                <!-- Skill Card 3 -->
+                <!-- <div class="card text-center">
+                    <div class="text-7xl mb-5 text-green-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-git-branch mx-auto"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-800">DevOps & Cloud</h3>
+                    <p class="text-gray-600 text-base leading-relaxed">Git, Docker, Kubernetes, AWS, Azure, GCP, CI/CD Pipelines, Terraform</p>
+                </div> -->
+                <!-- Skill Card 4 -->
+                <div class="card text-center">
+                    <div class="text-7xl mb-5 text-purple-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette mx-auto"><circle cx="12" cy="12" r="10"/><path d="M5.66 5.66A8 8 0 0 1 18.34 18.34"/><path d="M12 2v10a4 4 0 0 0 8 0V2"/><path d="M2 12h10a4 4 0 0 1 0 8H2"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-800">AI/ML</h3>
+                    <p class="text-gray-600 text-base leading-relaxed">Regression, Classification</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 bg-white">
+        <div class="container">
+            <h2 class="section-title text-gray-800">My Projects</h2>
+
+            <!-- Project Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="filter-button active" data-filter="all">All</button>
+                <button class="filter-button" data-filter="frontend">Frontend</button>
+                <button class="filter-button" data-filter="backend">Backend</button>
+                <button class="filter-button" data-filter="mobile">Mobile</button>
+                <button class="filter-button" data-filter="design">Design</button>
+                <button class="filter-button" data-filter="devops">DevOps</button>
+            </div>
+
+            <div id="project-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Project Card 1 -->
+                <div class="project-card card flex flex-col justify-between" data-category="frontend backend">
+                    <div>
+                        <img src="https://placehold.co/600x400/818cf8/ffffff?text=Project+1+Image" alt="Image of Project 1: Web Application" class="rounded-lg mb-6 w-full h-56 object-cover shadow-md border border-gray-200">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800">Movie Poster Platform</h3>
+                        <p class="text-gray-700 mb-6 leading-relaxed text-lg">Developed a full-stack e-commerce solution with user authentication, product catalog, shopping cart, and payment gateway integration. Focused on a seamless user experience and scalable backend.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-4 py-1.5 rounded-full">React</span>
+                        <span class="bg-green-100 text-green-800 text-sm font-semibold px-4 py-1.5 rounded-full">Node.js</span>
+                        <span class="bg-purple-100 text-purple-800 text-sm font-semibold px-4 py-1.5 rounded-full">MongoDB</span>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-semibold px-4 py-1.5 rounded-full">Stripe API</span>
+                    </div>
+                    <div class="flex justify-start space-x-4 mt-auto">
+                        <a href="#" target="_blank" class="btn-outline flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link mr-2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                            Live Demo
+                        </a>
+                        <a href="#" target="_blank" class="btn-primary flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github mr-2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.44-.78-3.46 0 0-1 0-2 1a7 7 0 0 0-3 0c-1 0-2 0-2-1a4.8 4.8 0 0 0-1 3.5c3 0 6 2 6 5.5-.08 1.25-.27 2.44-.78 3.46"></path><path d="M9 18c-4.5 1-4.5-2-4.5-2A3.7 3.7 0 0 0 3 10.5c-.5-1 .5-1.5 1-1.5a3.7 3.7 0 0 1 1-2c-.5-1-.5-2 0-3c0 0 1.5-.5 3.5 1.5l.5.5c1-1 2-1 3-1h.5"></path><path d="M12 2C6.5 2 2 6.5 2 12a10 10 0 0 0 17.06 7.06C22.25 16.81 22 14.07 22 12A10 10 0 0 0 12 2Z"/></svg>
+                            GitHub Repo
+                        </a>
+                    </div>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="project-card card flex flex-col justify-between" data-category="backend design">
+                    <div>
+                        <img src="https://placehold.co/600x400/a78bfa/ffffff?text=Project+2+Image" alt="Image of Project 2: Data Visualization Dashboard" class="rounded-lg mb-6 w-full h-56 object-cover shadow-md border border-gray-200">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800">Data Analytics Dashboard</h3>
+                        <p class="text-gray-700 mb-6 leading-relaxed text-lg">Designed and implemented an interactive data visualization dashboard for tracking key performance indicators. Features real-time data updates and customizable charts for various metrics.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <span class="bg-red-100 text-red-800 text-sm font-semibold px-4 py-1.5 rounded-full">Python</span>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-semibold px-4 py-1.5 rounded-full">Django</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-4 py-1.5 rounded-full">D3.js</span>
+                        <span class="bg-pink-100 text-pink-800 text-sm font-semibold px-4 py-1.5 rounded-full">PostgreSQL</span>
+                    </div>
+                    <div class="flex justify-start space-x-4 mt-auto">
+                        <a href="#" target="_blank" class="btn-outline flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link mr-2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                            Live Demo
+                        </a>
+                        <a href="#" target="_blank" class="btn-primary flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github mr-2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.44-.78-3.46 0 0-1 0-2 1a7 7 0 0 0-3 0c-1 0-2 0-2-1a4.8 4.8 0 0 0-1 3.5c3 0 6 2 6 5.5-.08 1.25-.27 2.44-.78 3.46"></path><path d="M9 18c-4.5 1-4.5-2-4.5-2A3.7 3.7 0 0 0 3 10.5c-.5-1 .5-1.5 1-1.5a3.7 3.7 0 0 1 1-2c-.5-1-.5-2 0-3c0 0 1.5-.5 3.5 1.5l.5.5c1-1 2-1 3-1h.5"></path><path d="M12 2C6.5 2 2 6.5 2 12a10 10 0 0 0 17.06 7.06C22.25 16.81 22 14.07 22 12A10 10 0 0 0 12 2Z"/></svg>
+                            GitHub Repo
+                        </a>
+                    </div>
+                </div>
+                <!-- Project Card 3 -->
+                <div class="project-card card flex flex-col justify-between" data-category="mobile frontend">
+                    <div>
+                        <img src="https://placehold.co/600x400/c7d2fe/333333?text=Project+3+Image" alt="Image of Project 3: Mobile Application UI" class="rounded-lg mb-6 w-full h-56 object-cover shadow-md border border-gray-200">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800">Mobile Task Management App</h3>
+                        <p class="text-gray-700 mb-6 leading-relaxed text-lg">Developed a cross-platform mobile application for task management with intuitive UI/UX, push notifications, and offline capabilities. Prioritized clean design and user productivity.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <span class="bg-purple-100 text-purple-800 text-sm font-semibold px-4 py-1.5 rounded-full">React Native</span>
+                        <span class="bg-indigo-100 text-indigo-800 text-sm font-semibold px-4 py-1.5 rounded-full">Firebase</span>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-semibold px-4 py-1.5 rounded-full">Redux</span>
+                        <span class="bg-green-100 text-green-800 text-sm font-semibold px-4 py-1.5 rounded-full">Expo</span>
+                    </div>
+                    <div class="flex justify-start space-x-4 mt-auto">
+                        <a href="#" target="_blank" class="btn-outline flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link mr-2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                            Live Demo
+                        </a>
+                        <a href="#" target="_blank" class="btn-primary flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github mr-2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.44-.78-3.46 0 0-1 0-2 1a7 7 0 0 0-3 0c-1 0-2 0-2-1a4.8 4.8 0 0 0-1 3.5c3 0 6 2 6 5.5-.08 1.25-.27 2.44-.78 3.46"></path><path d="M9 18c-4.5 1-4.5-2-4.5-2A3.7 3.7 0 0 0 3 10.5c-.5-1 .5-1.5 1-1.5a3.7 3.7 0 0 1 1-2c-.5-1-.5-2 0-3c0 0 1.5-.5 3.5 1.5l.5.5c1-1 2-1 3-1h.5"></path><path d="M12 2C6.5 2 2 6.5 2 12a10 10 0 0 0 17.06 7.06C22.25 16.81 22 14.07 22 12A10 10 0 0 0 12 2Z"/></svg>
+                            GitHub Repo
+                        </a>
+                    </div>
+                </div>
+                <!-- Add more project cards here following the same structure and data-category attributes -->
+                <!-- Example of another project card for DevOps -->
+                <div class="project-card card flex flex-col justify-between" data-category="devops backend">
+                    <div>
+                        <img src="https://placehold.co/600x400/b1e0f5/333333?text=DevOps+Project" alt="Image of a DevOps project setup" class="rounded-lg mb-6 w-full h-56 object-cover shadow-md border border-gray-200">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800">CI/CD Pipeline Automation</h3>
+                        <p class="text-gray-700 mb-6 leading-relaxed text-lg">Automated deployment pipelines for microservices using Docker, Kubernetes, and Jenkins. Improved development workflow efficiency and reduced deployment times significantly.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <span class="bg-gray-100 text-gray-800 text-sm font-semibold px-4 py-1.5 rounded-full">Docker</span>
+                        <span class="bg-red-100 text-red-800 text-sm font-semibold px-4 py-1.5 rounded-full">Kubernetes</span>
+                        <span class="bg-green-100 text-green-800 text-sm font-semibold px-4 py-1.5 rounded-full">Jenkins</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-4 py-1.5 rounded-full">AWS</span>
+                    </div>
+                    <div class="flex justify-start space-x-4 mt-auto">
+                        <a href="#" target="_blank" class="btn-outline flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link mr-2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                            Case Study
+                        </a>
+                        <a href="#" target="_blank" class="btn-primary flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github mr-2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.44-.78-3.46 0 0-1 0-2 1a7 7 0 0 0-3 0c-1 0-2 0-2-1a4.8 4.8 0 0 0-1 3.5c3 0 6 2 6 5.5-.08 1.25-.27 2.44-.78 3.46"></path><path d="M9 18c-4.5 1-4.5-2-4.5-2A3.7 3.7 0 0 0 3 10.5c-.5-1 .5-1.5 1-1.5a3.7 3.7 0 0 1 1-2c-.5-1-.5-2 0-3c0 0 1.5-.5 3.5 1.5l.5.5c1-1 2-1 3-1h.5"></path><path d="M12 2C6.5 2 2 6.5 2 12a10 10 0 0 0 17.06 7.06C22.25 16.81 22 14.07 22 12A10 10 0 0 0 12 2Z"/></svg>
+                            GitHub Repo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Connect Section -->
+    <section id="connect" class="py-24 bg-gray-100 rounded-b-3xl shadow-lg mb-12">
+        <div class="container">
+            <h2 class="section-title text-gray-800">Connect with Me</h2>
+            <div class="max-w-3xl mx-auto bg-white p-10 rounded-2xl shadow-xl border border-gray-100 text-center">
+                <p class="text-xl text-gray-700 mb-10 leading-relaxed">
+                    Explore my professional journey and code, or connect with me directly!
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-8 mb-12">
+                    <a href="link-to-your-resume.pdf" target="_blank" class="btn-primary flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mr-3"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                        Download Resume
+                    </a>
+                    <a href="https://github.com/Pranav-MRK" target="_blank" class="btn-secondary flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github mr-3"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.44-.78-3.46 0 0-1 0-2 1a7 7 0 0 0-3 0c-1 0-2 0-2-1a4.8 4.8 0 0 0-1 3.5c3 0 6 2 6 5.5-.08 1.25-.27 2.44-.78 3.46"></path><path d="M9 18c-4.5 1-4.5-2-4.5-2A3.7 3.7 0 0 0 3 10.5c-.5-1 .5-1.5 1-1.5a3.7 3.7 0 0 1 1-2c-.5-1-.5-2 0-3c0 0 1.5-.5 3.5 1.5l.5.5c1-1 2-1 3-1h.5"></path><path d="M12 2C6.5 2 2 6.5 2 12a10 10 0 0 0 17.06 7.06C22.25 16.81 22 14.07 22 12A10 10 0 0 0 12 2Z"/></svg>
+                        GitHub
+                    </a>
+                </div>
+                <div class="flex justify-center space-x-8">
+                    <a href="https://www.linkedin.com/in/pranav-kumbhar-838371278/" target="_blank" class="text-blue-700 hover:text-blue-900 transition-transform duration-300 transform hover:scale-125" aria-label="LinkedIn Profile">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="40" height="40" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" class="text-blue-500 hover:text-blue-700 transition-transform duration-300 transform hover:scale-125" aria-label="Twitter Profile">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17-19 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.5-.7 3.1-1.1 4.7-1.3 0 0-.5 2.1-2 3.4z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-950 text-white py-12 text-center rounded-t-3xl shadow-xl">
+        <div class="container">
+            <p class="text-lg">&copy; Pranav. All rights reserved.</p>
+            <p class="text-sm mt-4">Designed with <span class="text-red-500">&hearts;</span><a href="https://tailwindcss.com/" target="_blank" class="underline hover:text-blue-400 font-medium"></a></p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+    </button>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuButton.classList.toggle('open'); // Toggle 'open' class for animation
+            });
+
+            // Hide mobile menu when a link is clicked
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.classList.remove('open'); // Reset hamburger icon
+                });
+            });
+        }
+
+        // Back to Top button functionality
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) { // Show button after scrolling 300px
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Typewriter effect for hero text
+        const words = ["Developer", "Designer", "Innovator", "Problem Solver"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterTextElement = document.getElementById('typewriter-text');
+
+        function typeWriter() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                typewriterTextElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterTextElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = 120; // Slightly faster typing speed
+
+            if (isDeleting) {
+                typeSpeed = 60; // Faster deleting
+            }
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 1800; // Longer pause at end of word
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length; // Move to next word
+                typeSpeed = 250; // Pause before typing new word
+            }
+
+            setTimeout(typeWriter, typeSpeed);
+        }
+
+        // Project filtering logic
+        document.addEventListener('DOMContentLoaded', () => {
+            typeWriter(); // Start typewriter effect
+
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to the clicked button
+                    button.classList.add('active');
+
+                    const filter = button.dataset.filter;
+
+                    // Apply filter with a slight delay for visual effect (optional)
+                    setTimeout(() => {
+                        projectCards.forEach(card => {
+                            const categories = card.dataset.category.split(' ');
+                            if (filter === 'all' || categories.includes(filter)) {
+                                card.classList.remove('hidden');
+                            } else {
+                                card.classList.add('hidden');
+                            }
+                        });
+                    }, 100); // Small delay
+                });
+            });
+        });
+
+
+        // Dark/Light Mode Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        const htmlElement = document.documentElement; // Refers to the <html> tag
+
+        // Function to set the theme
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                htmlElement.classList.add('dark');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlElement.classList.remove('dark');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check for saved theme preference on initial load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            // If no saved theme, check OS preference
+            setTheme('dark');
+        } else {
+            // Default to light mode if no preference found
+            setTheme('light');
+        }
+
+        // Event listener for the theme toggle button
+        themeToggle.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        });
+
+        // Highlight active navigation link based on scroll position AND header shrink
+        const mainHeader = document.getElementById('main-header');
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.desktop-nav-link');
+
+        function highlightNavLink() {
+            let current = '';
+            // Determine the offset based on header's current size
+            const headerHeight = mainHeader.offsetHeight;
+            const offset = headerHeight + 20; // A bit more than header height
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - offset;
+                const sectionHeight = section.clientHeight;
+                // Add hero section check, as it doesn't have a direct nav link but should be "active" at the top
+                if (section.id === 'hero' && pageYOffset < sections[1].offsetTop - offset) {
+                     current = 'hero'; // Special case for hero section
+                } else if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            // If scrolled past all sections, clear active state or set to a default (e.g., hero)
+            if (current === '' && pageYOffset > (document.body.scrollHeight - window.innerHeight - 50)) {
+                // If at the very bottom, potentially highlight connect or leave clear
+                // For now, if no section is active, leave all inactive
+            } else if (current === '') {
+                // If not in any section and not at bottom, assume hero or top of page
+                current = 'hero';
+            }
+
+
+            navLinks.forEach(link => {
+                link.classList.remove('active-link');
+                if (link.dataset.section === current) {
+                    link.classList.add('active-link');
+                }
+            });
+        }
+
+        function handleScroll() {
+            const scrollY = window.scrollY;
+
+            // Header shrink effect
+            if (scrollY > 50) { // Adjust this value to when you want the header to shrink
+                mainHeader.classList.add('scrolled');
+            } else {
+                mainHeader.classList.remove('scrolled');
+            }
+
+            highlightNavLink(); // Call highlight function on scroll
+        }
+
+        // Add event listener for scroll to highlight nav links and handle header shrink
+        window.addEventListener('scroll', handleScroll);
+        // Call on load to set initial active link and header state
+        document.addEventListener('DOMContentLoaded', () => {
+            handleScroll(); // Initial call
+            typeWriter(); // Ensure typewriter starts
+        });
+    </script>
+
+</body>
+</html>
